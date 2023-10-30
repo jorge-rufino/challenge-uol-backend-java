@@ -1,5 +1,7 @@
 package com.rufino.uolhost.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +31,10 @@ public class PlayerService {
 
 	public String getCodiname(GroupType groupType) {
 		return codinameHandler.findCodiname(groupType);
+	}
+	
+	public List<Player> findAll(){
+		return playerRepository.findAll();
 	}
 	
 }
