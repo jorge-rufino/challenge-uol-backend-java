@@ -1,5 +1,7 @@
 package com.rufino.uolhost.model;
 
+import com.rufino.uolhost.dto.PlayerDto;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,6 +20,12 @@ import lombok.Setter;
 @EqualsAndHashCode(of = "id")
 public class Player {
 	
+	public Player(PlayerDto playerDto) {
+		this.name = playerDto.name();
+		this.email = playerDto.email();
+		this.phone= playerDto.phone();
+		this.groupType = playerDto.groupType();
+	}
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
