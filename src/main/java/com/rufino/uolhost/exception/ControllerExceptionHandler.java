@@ -1,5 +1,6 @@
 package com.rufino.uolhost.exception;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.NoSuchElementException;
 import java.util.Set;
 
@@ -40,6 +41,13 @@ public class ControllerExceptionHandler {
 		}
 		
 		ExceptionDto dto = new ExceptionDto(message, "400");
+		
+		return ResponseEntity.badRequest().body(dto);
+	}
+	
+	@ExceptionHandler(SQLIntegrityConstraintViolationException.class)	
+	public ResponseEntity<?> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException exception) {
+		ExceptionDto dto = new ExceptionDto("Email já cadastrado.", "400");
 		
 		return ResponseEntity.badRequest().body(dto);
 	}
